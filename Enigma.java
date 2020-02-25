@@ -29,12 +29,17 @@ import java.util.Scanner; //Gets user Input
 public class Enigma {
 
     //Array to hold switch board values
-    static node [] pb = new node [26];
+    static ArrayList<node> pb = new ArrayList<>(26);
 
     //nodes used to connect letters to eachother on the plug board
-    public class node{
+    public static class node{
         char Letter; //letter used
         node connect; //connection to that letter
+
+        node(){
+            Letter = '0';
+            connect = null;
+        }
     }
 
 
@@ -53,42 +58,24 @@ public class Enigma {
     //Method to set up the plug board
     private static void buildBoard(){
         int let = 65; //used for assigning letters on the plugboard
-        int con = 25; // used to connect letters to each other
-        for(int i = 0; i < (pb.length / 2); i++){
-            pb[i].Letter = (char) (i + let);
-            pb[i].connect = pb[i + con];
-            let--;
+        int con = let + 25; // used to connect letters to each other
+        for(int i = 0; i < (pb.size() / 2); i++){
+            node temp = new node();
+            temp.Letter = (char) let; //Set letter to ith node
+            let++;
             con--;
         }
     }
     private static void printBoard(){
-        for(int i = 0; i < pb.length; i++){
-            System.out.println("Letter: " + pb[i].Letter +"\nConnection: " + pb[i].connect.Letter);
+        for(int i = 0; i < pb.size(); i++){
+            System.out.println("Letter: " + pb.get(i).Letter +"\nConnection: " + pb.get(i).connect.Letter);
         }
     }
 
 
     public static void main(String[] args) {
 
-        Scanner input = new Scanner(System.in); //Create Scanner object
-        //System.out.println("Enter message: ");
-
-        //String message = input.nextLine(); //Get string
-        //message = message.toUpperCase(); //set chars to uppercase
-
-        //char[] msg = message.toCharArray(); //convert to char array
-        //char[] output = new char[msg.length];
-
-        //for(int i = 0; i < msg.length; i++){
-        //   if(Character.isWhitespace(msg[i])) //Take out spaces (enigma does not like spaces)
-        //       output[i] = ' ';
-        //    else
-                plugBoard();
-        //}
-
-        //String out = Arrays.toString(output);
-
-        //System.out.println("\n"+ out);
+        plugBoard();
 
 
     }
