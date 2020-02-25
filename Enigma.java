@@ -20,63 +20,63 @@
 //Plug board takes a char and transforms it into its pair
 
 
-
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Hashtable; //hashtable defined for the plugboard
 import java.util.Scanner; //Gets user Input
 
 
 public class Enigma {
 
     //Array to hold switch board values
-    static ArrayList<node> pb = new ArrayList<>(26);
-
-    //nodes used to connect letters to eachother on the plug board
-    public static class node{
-        char Letter; //letter used
-        node connect; //connection to that letter
-
-        node(){
-            Letter = '0';
-            connect = null;
-        }
-    }
+    private static Hashtable<Character,Character> pb = new Hashtable<>();
 
 
-    //Plugboard should take an input - then output the character it is connected to.
+    //Plug board should take an input - then output the character it is connected to.
     // 1 to 1
-    public static void plugBoard(){
+    private static char plugBoard(char a){
 
-        buildBoard();
-        printBoard();
+        a = Character.toUpperCase(a);
+        a = pb.get(a);
 
-
-
-
+        return a;
     }
 
     //Method to set up the plug board
+    //Initial Method will reverse Alphabet A -> Z , B -> Y , ...
     private static void buildBoard(){
         int let = 65; //used for assigning letters on the plugboard
         int con = let + 25; // used to connect letters to each other
-        for(int i = 0; i < (pb.size() / 2); i++){
-            node temp = new node();
-            temp.Letter = (char) let; //Set letter to ith node
+        for(int i = 0; i < 13; i++){
+
+            pb.put((char) let,(char) con);
+            pb.put((char) con,(char) let);
+
+
+
             let++;
             con--;
         }
     }
-    private static void printBoard(){
-        for(int i = 0; i < pb.size(); i++){
-            System.out.println("Letter: " + pb.get(i).Letter +"\nConnection: " + pb.get(i).connect.Letter);
-        }
+
+    private static void printboard(){
+        System.out.println(pb.entrySet());
     }
 
 
     public static void main(String[] args) {
 
-        plugBoard();
+        buildBoard();
 
+        //Test input
+        char a = 'A';
+        StringBuilder output = new StringBuilder();
+        Scanner input = new Scanner(System.in);
+        do{
+                System.out.println("Enter a char: ");
+                a = input.next().charAt(0);
+                if(a != '0')
+                    output.append(plugBoard(a));
+        }while(a != '0');
 
+        System.out.print(output);
     }
 }
