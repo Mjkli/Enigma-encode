@@ -43,5 +43,7 @@ public class Enigma {
         }while(a != '0');
 
         System.out.print(output);
+
+        rotors.printRotors();
     }
 }
