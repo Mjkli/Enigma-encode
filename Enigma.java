@@ -30,7 +30,7 @@ public class Enigma {
         rotors.buildRotors();
 
         //Test input
-        char a = 'G';
+        char a = 'J';
         StringBuilder output = new StringBuilder();
         Scanner input = new Scanner(System.in);
 
@@ -48,7 +48,11 @@ public class Enigma {
         System.out.print(output);
 
          */
+
+        rotors.printRotors();
         System.out.println(rotors.rotorRun(a));
+        char b = rotors.rotorRun(a);
+        System.out.println(rotors.rotorRun2(b));
 
     }
 }
