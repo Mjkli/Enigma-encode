@@ -26,55 +26,22 @@ import java.util.Scanner; //Gets user Input
 
 public class Enigma {
 
-    //Array to hold switch board values
-    private static Hashtable<Character,Character> pb = new Hashtable<>();
-
-
-    //Plug board should take an input - then output the character it is connected to.
-    // 1 to 1
-    private static char plugBoard(char a){
-
-        a = Character.toUpperCase(a);
-        a = pb.get(a);
-
-        return a;
-    }
-
-    //Method to set up the plug board
-    //Initial Method will reverse Alphabet A -> Z , B -> Y , ...
-    private static void buildBoard(){
-        int let = 65; //used for assigning letters on the plugboard
-        int con = let + 25; // used to connect letters to each other
-        for(int i = 0; i < 13; i++){
-
-            pb.put((char) let,(char) con);
-            pb.put((char) con,(char) let);
-
-
-
-            let++;
-            con--;
-        }
-    }
-
-    private static void printboard(){
-        System.out.println(pb.entrySet());
-    }
-
-
     public static void main(String[] args) {
 
-        buildBoard();
 
         //Test input
         char a = 'A';
         StringBuilder output = new StringBuilder();
         Scanner input = new Scanner(System.in);
+
+        //While the input char is not '0' Keep asking for new char
+        //Plugboard.getchar will return connecting char and add it the string of output
+
         do{
                 System.out.println("Enter a char: ");
                 a = input.next().charAt(0);
                 if(a != '0')
-                    output.append(plugBoard(a));
+                    output.append(plugboard.getChar(a));
         }while(a != '0');
 
         System.out.print(output);
