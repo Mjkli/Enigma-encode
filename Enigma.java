@@ -5,6 +5,7 @@
 // switch string to char array
 // Switch each char based on plug board
 // run char through rotor for extra mixing
+// reflector will send it back through the rotors again
 // run char through plug board again
 //  output encrypted message
 
@@ -26,14 +27,16 @@ public class Enigma {
 
     public static void main(String[] args) {
 
+        rotors.buildRotors();
 
         //Test input
-        char a = 'A';
+        char a = 'G';
         StringBuilder output = new StringBuilder();
         Scanner input = new Scanner(System.in);
 
         //While the input char is not '0' Keep asking for new char
         //Plugboard.getchar will return connecting char and add it the string of output
+        /*
 
         do{
                 System.out.println("Enter a char: ");
@@ -44,6 +47,8 @@ public class Enigma {
 
         System.out.print(output);
 
-        rotors.printRotors();
+         */
+        System.out.println(rotors.rotorRun(a));
+
     }
 }

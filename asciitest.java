@@ -4,8 +4,7 @@
 
 public class asciitest {
     public static void main(String[] args) {
-        String rotor1val = "EKMFLGDQVZNTOWYHXUSPAIBRCJ";
-        String rotor2val = ""
+
 
     }
 }
