@@ -45,10 +45,10 @@ class rotors {
            rotor1rev.put(r1a[i],(char) (i + 65));
 
            rotor2.put((char) (i + 65), r2a[i]);
-           rotor2rev.put(r1a[i],(char) (i + 65));
+           rotor2rev.put(r2a[i],(char) (i + 65));
 
            rotor3.put((char) (i + 65), r3a[i]);
-           rotor3rev.put(r1a[i],(char) (i + 65));
+           rotor3rev.put(r3a[i],(char) (i + 65));
 
            reflector.put((char) (i + 65), refarr[i]);
        }
@@ -70,10 +70,4 @@ class rotors {
         a = rotor1rev.get(rotor2rev.get(rotor3rev.get(reflector.get(a))));
        return a;
     }
-    static char rotorRun2(char a){
-       a = rotor3rev.get(rotor2rev.get(rotor1rev.get(a)));
-       a = rotor1.get(rotor2.get(rotor3.get(reflector.get(a))));
-       return a;
-    }
-
 }
