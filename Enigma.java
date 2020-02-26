@@ -19,8 +19,6 @@
 
 //Plug board takes a char and transforms it into its pair
 
-
-import java.util.Hashtable; //hashtable defined for the plugboard
 import java.util.Scanner; //Gets user Input
 
 

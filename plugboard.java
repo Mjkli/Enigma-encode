@@ -1,3 +1,8 @@
+//This class handels the front of the enigma machine. i.e. the plugboard. connecting one letter to another
+//In later iterations the settings should be able to be changed.
+
+
+
 import java.util.Hashtable;
 
 public class plugboard {
@@ -26,7 +31,7 @@ public class plugboard {
 
             pb.put((char) let,(char) con);
             pb.put((char) con,(char) let);
-            
+
             let++;
             con--;
         }
