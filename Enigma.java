@@ -25,32 +25,32 @@ import java.util.Scanner; //Gets user Input
 
 public class Enigma {
 
+    private static char enigma(char a){
+        return plugboard.getChar(rotors.rotorRun(plugboard.getChar(a)));
+    }
+
     public static void main(String[] args) {
 
         rotors.buildRotors();
+        plugboard.buildBoard();
 
         //Test input
-        char a = 'M';
+        char a;
         StringBuilder output = new StringBuilder();
         Scanner input = new Scanner(System.in);
 
         //While the input char is not '0' Keep asking for new char
         //Plugboard.getchar will return connecting char and add it the string of output
-        /*
+
 
         do{
                 System.out.println("Enter a char: ");
                 a = input.next().charAt(0);
                 if(a != '0')
-                    output.append(plugboard.getChar(a));
+                    output.append(enigma(a));
         }while(a != '0');
 
         System.out.print(output);
-
-         */
-
-        //rotors.printRotors();
-        System.out.println(rotors.rotorRun(a));
 
     }
 }

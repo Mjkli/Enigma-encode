@@ -7,10 +7,6 @@ import java.util.Hashtable;
 
 public class plugboard {
 
-    plugboard(){
-        buildBoard();
-    }
-
     private static Hashtable<Character,Character> pb = new Hashtable<>();
 
 
@@ -24,7 +20,7 @@ public class plugboard {
 
     //Method to set up the plug board
     //Initial Method will reverse Alphabet A -> Z , B -> Y , ...
-    private static void buildBoard(){
+    public static void buildBoard(){
         int let = 65; //used for assigning letters on the plugboard
         int con = let + 25; // used to connect letters to each other
         for(int i = 0; i < 13; i++){

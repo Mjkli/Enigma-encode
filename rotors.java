@@ -23,10 +23,10 @@ class rotors {
    private static Hashtable<Character,Character> rotor1 = new Hashtable<>();
    private static Hashtable<Character,Character> rotor2 = new Hashtable<>();
    private static Hashtable<Character,Character> rotor3 = new Hashtable<>();
-    private static Hashtable<Character,Character> rotor1rev = new Hashtable<>();
-    private static Hashtable<Character,Character> rotor2rev = new Hashtable<>();
-    private static Hashtable<Character,Character> rotor3rev = new Hashtable<>();
-    private static Hashtable<Character,Character> reflector = new Hashtable<>();
+   private static Hashtable<Character,Character> rotor1rev = new Hashtable<>();
+   private static Hashtable<Character,Character> rotor2rev = new Hashtable<>();
+   private static Hashtable<Character,Character> rotor3rev = new Hashtable<>();
+   private static Hashtable<Character,Character> reflector = new Hashtable<>();
 
 
    static void buildRotors(){
