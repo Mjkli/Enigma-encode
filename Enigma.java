@@ -44,10 +44,27 @@ public class Enigma {
 
 
         do{
+                int in = 1;
                 System.out.println("Enter a char: ");
                 a = input.next().charAt(0);
-                if(a != '0')
+                if(a != '0') {
                     output.append(enigma(a));
+                    rotors.printRotors();
+                    rotors.incrementRotor1();
+                    rotors.printRotors();
+
+                   // in++;
+
+                    /*
+                    if(in % 26 == 0){
+                      //  rotors.incrementRotor2();
+                    }
+                    if(in % 646 == 0){
+                        //rotors.incrementRotor3();
+                    }
+                    */
+
+                }
         }while(a != '0');
 
         System.out.print(output);

@@ -55,19 +55,49 @@ class rotors {
 
     }
 
-     static void printRotors(){
-         System.out.println("rotor1: " + rotor1.entrySet());
-         System.out.println("rotor2: " + rotor2.entrySet());
-         System.out.println("rotor3: " + rotor3.entrySet());
-         System.out.println("Reflector: " + reflector.entrySet());
-         System.out.println("rotor3rev: " + rotor3rev.entrySet());
-         System.out.println("rotor2rev: " + rotor2rev.entrySet());
-         System.out.println("rotor1rev: " + rotor1rev.entrySet());
+    static void printRotors(){
+        System.out.println("rotor1: " + rotor1.entrySet());
+        // System.out.println("rotor2: " + rotor2.entrySet());
+        // System.out.println("rotor3: " + rotor3.entrySet());
+        //System.out.println("Reflector: " + reflector.entrySet());
+        //System.out.println("rotor3rev: " + rotor3rev.entrySet());
+        //System.out.println("rotor2rev: " + rotor2rev.entrySet());
+        System.out.println("rotor1rev: " + rotor1rev.entrySet());
     }
 
     static char rotorRun(char a){
         a = rotor3.get(rotor2.get(rotor1.get(a)));
         a = rotor1rev.get(rotor2rev.get(rotor3rev.get(reflector.get(a))));
        return a;
+    }
+
+    static void incrementRotor1(){
+        char temp = rotor1.get((char) 65);
+
+        for(int i = 64; i < 90; i++){
+           rotor1.replace((char) i, rotor1.get((char) (i + 1)));
+       }
+        rotor1.replace((char) 90, temp);
+
+    }
+
+    static void incrementRotor2(){
+        for(int i = 0; i < 26; i++){
+            rotor2.replace((char) (i + 64), rotor2.get((char) (i + 64 + 1)));
+            if(i == 25){
+                rotor2.replace((char) (i + 64), rotor2.get((char) 64));
+            }
+        }
+
+    }
+
+    static void incrementRotor3(){
+        for(int i = 0; i < 26; i++){
+            rotor3.replace((char) (i + 64), rotor3.get((char) (i + 64 + 1)));
+            if(i == 25){
+                rotor3.replace((char) (i + 64), rotor3.get((char) 64));
+            }
+        }
+
     }
 }
