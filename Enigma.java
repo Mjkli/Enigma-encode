@@ -42,24 +42,23 @@ public class Enigma {
         //While the input char is not '0' Keep asking for new char
         //Plugboard.getchar will return connecting char and add it the string of output
 
-
+        int in = 1;
         do{
-                int in = 1;
                 System.out.println("Enter a char: ");
                 a = input.next().charAt(0);
                 if(a != '0') {
                     output.append(enigma(a));
                     rotors.incrementRotor1();
-                   // in++;
+                    in++;
 
-                    /*
+
                     if(in % 26 == 0){
-                      //  rotors.incrementRotor2();
+                        rotors.incrementRotor2();
                     }
                     if(in % 646 == 0){
-                        //rotors.incrementRotor3();
+                        rotors.incrementRotor3();
                     }
-                    */
+
 
                 }
         }while(a != '0');

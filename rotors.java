@@ -60,9 +60,9 @@ class rotors {
     }
 
     static char rotorRun(char a){
-        a = rotor3.get(rotor2.get(rotor1.get(a)));
-        a = rotor1.inverse().get(rotor2.inverse().get(rotor3.inverse().get(reflector.get(a))));
-       return a;
+        a = rotor3.get(rotor2.get(rotor1.get(a))); //Go through the rotors
+        a = rotor1.inverse().get(rotor2.inverse().get(rotor3.inverse().get(reflector.get(a)))); //Go through the rotors in reverse
+       return a; // output changes
     }
 
     static void incrementRotor1(){
@@ -78,22 +78,26 @@ class rotors {
     }
 
     static void incrementRotor2(){
-        for(int i = 0; i < 26; i++){
-            rotor2.replace((char) (i + 64), rotor2.get((char) (i + 64 + 1)));
-            if(i == 25){
-                rotor2.replace((char) (i + 64), rotor2.get((char) 64));
-            }
+        char end = rotor2.get('A');
+
+        for(int i = 65; i < 90; i++){
+            char temp = rotor2.get((char) (i + 1));
+            rotor2.remove((char) (i + 1));
+            rotor2.put((char) (i), temp);
         }
+        rotor2.put('Z',end);
 
     }
 
     static void incrementRotor3(){
-        for(int i = 0; i < 26; i++){
-            rotor3.replace((char) (i + 64), rotor3.get((char) (i + 64 + 1)));
-            if(i == 25){
-                rotor3.replace((char) (i + 64), rotor3.get((char) 64));
-            }
+        char end = rotor3.get('A');
+
+        for(int i = 65; i < 90; i++){
+            char temp = rotor3.get((char) (i + 1));
+            rotor3.remove((char) (i + 1));
+            rotor3.put((char) (i), temp);
         }
+        rotor3.put('Z',end);
 
     }
 }
