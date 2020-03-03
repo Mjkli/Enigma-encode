@@ -33,7 +33,7 @@ public class Enigma {
 
     private static char enigma(char a){
         //Go through the plugboard - then through the rotors - reflected back through the rotors - then back through the plugboard
-        if(Character.isLetter(a)){
+        if(Character.isAlphabetic(a) && (int) a < 90){ //Have to limit it to under 90 so that other languages characters do not interfere.
             return plugboard.getChar(rotors.rotorRun(plugboard.getChar(a)));
         }
         return a;
@@ -46,8 +46,8 @@ public class Enigma {
 
         try{
             StringBuilder outLine = new StringBuilder(); //used for output from enigma
-            BufferedReader reader = new BufferedReader(new FileReader("Unencrypted.txt")); //read file Unencrypted
-            PrintWriter write = new PrintWriter("encrypted.txt", StandardCharsets.UTF_8); //write to file encrypted with UTF8
+            BufferedReader reader = new BufferedReader(new FileReader("encrypted.txt")); //read file Unencrypted
+            PrintWriter write = new PrintWriter("unencrypted2.txt", StandardCharsets.UTF_8); //write to file encrypted with UTF8
 
 
             String line = reader.readLine(); //line to get output from string
@@ -55,6 +55,7 @@ public class Enigma {
             while(line != null){
                 char [] arr = line.toCharArray(); //convert output to char array to parse through
                 for (char c : arr) {
+                    c = Character.toUpperCase(c); //adjust to make any characters to uppercase
                     outLine.append(enigma(c));
                     rotors.incrementRotor1(); //increment rotor1
                     in++;

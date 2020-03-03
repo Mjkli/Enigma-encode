@@ -13,7 +13,6 @@ class plugboard {
     //Plug board should take an input - then output the character it is connected to.
     // 1 to 1
     static char getChar(char a){
-            a = Character.toUpperCase(a); //adjust to make any characters to uppercase
             return pb.get(a);
     }
 
