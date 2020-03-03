@@ -33,7 +33,7 @@ public class Enigma {
 
     private static char enigma(char a){
         //Go through the plugboard - then through the rotors - reflected back through the rotors - then back through the plugboard
-        if(Character.isLetter(a)) {
+        if(Character.isLetter(a)){
             return plugboard.getChar(rotors.rotorRun(plugboard.getChar(a)));
         }
         return a;
