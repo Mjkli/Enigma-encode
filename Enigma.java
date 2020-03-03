@@ -49,10 +49,7 @@ public class Enigma {
                 a = input.next().charAt(0);
                 if(a != '0') {
                     output.append(enigma(a));
-                    rotors.printRotors();
                     rotors.incrementRotor1();
-                    rotors.printRotors();
-
                    // in++;
 
                     /*

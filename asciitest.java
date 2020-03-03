@@ -19,13 +19,16 @@ public class asciitest {
 
         //Shifting values
 
+        char end = test.get('A');
+
         for(int i = 65; i < 90; i++){
             char temp = test.get((char) (i + 1));
             test.remove((char) (i + 1));
             test.put((char) (i), temp);
         }
+        test.put('Z',end);
 
-
+        System.out.println("\nforward: " + test.keySet() + "\nvalues:  " + test.values());
 
     }
 }

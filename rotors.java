@@ -18,15 +18,14 @@ UKW-B = YRUHQSLDPXNGOKMIEBFZCWVJAT
  */
 
 import java.util.Hashtable; //used for rotor settings
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 
 class rotors {
-   private static Hashtable<Character,Character> rotor1 = new Hashtable<>();
-   private static Hashtable<Character,Character> rotor2 = new Hashtable<>();
-   private static Hashtable<Character,Character> rotor3 = new Hashtable<>();
-   private static Hashtable<Character,Character> rotor1rev = new Hashtable<>();
-   private static Hashtable<Character,Character> rotor2rev = new Hashtable<>();
-   private static Hashtable<Character,Character> rotor3rev = new Hashtable<>();
-   private static Hashtable<Character,Character> reflector = new Hashtable<>();
+    private static BiMap<Character,Character> rotor1 = HashBiMap.create();
+    private static BiMap<Character,Character> rotor2 = HashBiMap.create();
+    private static BiMap<Character,Character> rotor3 = HashBiMap.create();
+    private static Hashtable<Character,Character> reflector = new Hashtable<>();
 
 
    static void buildRotors(){
@@ -42,13 +41,10 @@ class rotors {
        for(int i = 0; i < 26; i++){
            //Select rotor - key is A to Z (have to add 64 for the correct Ascii value / Object is chosen from the char array
            rotor1.put((char) (i + 65), r1a[i]);
-           rotor1rev.put(r1a[i],(char) (i + 65));
 
            rotor2.put((char) (i + 65), r2a[i]);
-           rotor2rev.put(r2a[i],(char) (i + 65));
 
            rotor3.put((char) (i + 65), r3a[i]);
-           rotor3rev.put(r3a[i],(char) (i + 65));
 
            reflector.put((char) (i + 65), refarr[i]);
        }
@@ -60,24 +56,24 @@ class rotors {
         // System.out.println("rotor2: " + rotor2.entrySet());
         // System.out.println("rotor3: " + rotor3.entrySet());
         //System.out.println("Reflector: " + reflector.entrySet());
-        //System.out.println("rotor3rev: " + rotor3rev.entrySet());
-        //System.out.println("rotor2rev: " + rotor2rev.entrySet());
-        System.out.println("rotor1rev: " + rotor1rev.entrySet());
+        System.out.println("rotor1rev: " + rotor1.inverse().entrySet());
     }
 
     static char rotorRun(char a){
         a = rotor3.get(rotor2.get(rotor1.get(a)));
-        a = rotor1rev.get(rotor2rev.get(rotor3rev.get(reflector.get(a))));
+        a = rotor1.inverse().get(rotor2.inverse().get(rotor3.inverse().get(reflector.get(a))));
        return a;
     }
 
     static void incrementRotor1(){
-        char temp = rotor1.get((char) 65);
+        char end = rotor1.get('A');
 
-        for(int i = 64; i < 90; i++){
-           rotor1.replace((char) i, rotor1.get((char) (i + 1)));
-       }
-        rotor1.replace((char) 90, temp);
+        for(int i = 65; i < 90; i++){
+            char temp = rotor1.get((char) (i + 1));
+            rotor1.remove((char) (i + 1));
+            rotor1.put((char) (i), temp);
+        }
+        rotor1.put('Z',end);
 
     }
 
