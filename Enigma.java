@@ -1,13 +1,15 @@
 //Anthony Bruno
 //Enigma
 
-// get input from user
+// get input from file
 // switch string to char array
 // Switch each char based on plug board
 // run char through rotor for extra mixing
 // reflector will send it back through the rotors again
 // run char through plug board again
-//  output encrypted message
+// output encrypted message char
+// build line from output of characters
+// print to encrypted file from those string output
 
 
 //Strings should be encoded / decoded with same enigma settings
@@ -21,9 +23,7 @@
 //Plug board takes a char and transforms it into its pair
 
 import java.io.PrintWriter;
-import java.nio.Buffer;
 import java.nio.charset.StandardCharsets;
-import java.util.Scanner; //Gets user Input
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
