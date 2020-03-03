@@ -1,0 +1,7 @@
+Hello
+This is a message test for Enigma
+make sure that this message is used to calibrate the machine
+
+
+End Message
+Anthony
